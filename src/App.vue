@@ -6,7 +6,10 @@
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
     <br>
     <span>{{ componentSelecionado }}</span>
-    <component :is="componentSelecionado"></component>
+    <component 
+      :is="componentSelecionado"
+      v-bind="propsAtuais"
+    ></component>
   </div>
 </template>
 
@@ -28,6 +31,13 @@ export default {
         { id: 1, titulo: 'Components no Vue', conteudo: 'Components são uma das peças mais importantes no vue', autor: 'Carlos Perez'},
         { id: 2, titulo: 'Distribuindo conteudo com slots', conteudo: 'Slots podem ser usados como repositorios de codigo HTML', autor: 'Dolores Faia'}
       ]
+    }
+  },
+  computed: {
+    propsAtuais(){
+      return this.componentSelecionado === 'PostsLista'
+        ? { posts: this.posts}
+        : {}
     }
   }
 }
