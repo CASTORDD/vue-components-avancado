@@ -5,7 +5,7 @@
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
 
-    <keep-alive>
+    <keep-alive max="2">
       <component 
         :is="componentSelecionado"
         v-bind="propsAtuais">
