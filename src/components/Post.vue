@@ -1,3 +1,7 @@
 <template>
-  <h2>Componets no vue</h2>
+  <div>
+    <slot></slot>
+  </div>
 </template>
+
+
