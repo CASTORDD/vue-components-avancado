@@ -4,12 +4,14 @@
     <button @click="componentSelecionado = 'Home'">Home</button>
     <button @click="componentSelecionado = 'PostsLista'">Posts</button>
     <button @click="componentSelecionado = 'Sobre'">Sobre</button>
-    <br>
-    <span>{{ componentSelecionado }}</span>
-    <component 
-      :is="componentSelecionado"
-      v-bind="propsAtuais"
-    ></component>
+
+    <keep-alive>
+      <component 
+        :is="componentSelecionado"
+        v-bind="propsAtuais">
+      </component>
+    </keep-alive>
+
   </div>
 </template>
 
