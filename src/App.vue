@@ -20,10 +20,22 @@
 import Home from './components/Home'
 import Sobre from './components/Sobre'
 import PostsLista from './components/PostsLista.vue'
+import { setTimeout } from 'timers';
 
 export default {
   components: {
-    Assincrono: () => import('./components/Assincrono.vue'),
+    Assincrono: () => ({
+      component: new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(import('./components/Assincrono.vue'))
+          reject('Carga Errada!')
+        }, 2000)
+      }),
+      loading: { template: '<p>Cargando...</p>'},
+      error: { template: '<p>Error!</p>'},
+      delay: 200,
+      timeOut: 3000
+    }),
     Home,
     PostsLista,
     Sobre
